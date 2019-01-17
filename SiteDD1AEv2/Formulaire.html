@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no;initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/squelette.css">
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<script  type="text/javascript" src="js/jspdf.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+  	</script>
+    <title>Formulaire de contact </title> 
+
+</head>
+<body>
+	<header>
+		<div class="icon">
+			<img src="images/IconeMenu.png">
+		</div>
+	</header>
+	
+<div class="comble"></div>
+	<div class="menu ">
+		<a href="Acceuil.html">Acceuil</a>
+		<a href="Trash.html">TrashWheel</a>
+		<a href="Manta.html">The Manta</a>
+		<a href="Ecogeste.html">Etre Eco-citoyen</a>
+		<a href="Formulaire.html">Nous Contacter</a>
+	</div>
+      <div class="photobanner">
+        
+<img class="first , Imageslider" src="images/pollution1.jpg">
+<img src="images/pollution2.jpg" class="Imageslider">
+<img src="images/pollution3.jpg" class="Imageslider">
+<img src="images/pollution4.jpg" class="Imageslider">
+<img src="images/pollution5.jpg" class="Imageslider">
+<img src="images/pollution6.jpg" class="Imageslider">
+<img src="images/pollution7.jpg" class="Imageslider">     
+<img src="images/pollution8.jpg" class="Imageslider">
+<img src="images/pollution9.jpg" class="Imageslider">
+<img src="images/pollution10.jpg" class="Imageslider">
+<img src="images/pollution2.jpg" class="Imageslider">
+<img src="images/pollution3.jpg" class="Imageslider">
+<img src="images/pollution4.jpg" class="Imageslider">
+<img src="images/pollution5.jpg" class="Imageslider">
+<img src="images/pollution6.jpg" class="Imageslider">
+<img src="images/pollution7.jpg" class="Imageslider">     
+<img src="images/pollution8.jpg" class="Imageslider">
+
+          </div>
+
+	<form id="Formulaire" method="post" action="Redirection.html" action="mailto: a.lucea@epmistes.net" action="">
+			<fieldset>
+				<legend>Vous voulez en savoir plus ?</legend>
+				<p>
+					<label for="Question">Sexe</label >
+					<br>
+					<label for="Question1">Homme</label>
+					<input type="checkbox" name="Question1" id="Question1"/> 
+					<label for="Question2">Femme</label>
+					<input type="checkbox" name="Question2" id="Question2"/> 
+				</p>
+				<p>
+					<label for="Nom">Nom</label>
+					<input type="text" name="Nom" id="Nom" autofocus required/> 
+					<span id='missNom'></span><br>
+				</p>
+				<p>
+					<label for="Prénom">Prénom</label>
+					<input type="text" name="Prénom" id="Prénom"  required/> 
+					<span id='missPrenom'></span><br>
+				</p>
+				<p>
+					<label for="Age">Date de naissance</label>
+					<input type="text" name="Age" id="Age" /> 
+				</p>
+				<p>
+					<label for="Mail">E-mail</label>
+					<input type="text" name="Mail" id="Mail" required/> 
+					<span id='missMail'></span><br>
+				</p>
+				<p>
+					<label for="Numéro de téléphone">Numéro de téléphone</label>
+					<input type="text" name="Numéro de téléphone" id="Numéro" /> 
+				</p>
+
+				<input type="submit" value="Envoyer" id='boutton_envoi'>
+
+			</fieldset>
+		</form>
+
+<script type="text/javascript">	
+    var formValid = document.getElementById('boutton_envoi');
+    var Nom = document.getElementById('Nom');
+    var missNom = document.getElementById('missNom');
+    var NomValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    
+    formValid.addEventListener('click', validation);
+    
+    function validation(event){
+        //Si le champ est vide
+        if (Nom.validity.valueMissing){
+            event.preventDefault();
+            missNom.textContent = 'Nom manquant';
+            missNom.style.color = 'red';
+        //Si le format de données est incorrect
+        }else if (NomValid.test(Nom.value) == false){
+            event.preventDefault();
+            missNom.textContent = 'Vérifier vos informations';
+            missNom.style.color = 'red';
+        }else{ validation1(event); validation2(event);
+        }
+    }
+
+    var formValid = document.getElementById('boutton_envoi');
+    var Prénom = document.getElementById('Prénom');
+    var missPrenom = document.getElementById('missPrenom');
+    var PrénomValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+    
+    formValid.addEventListener('click', validation);
+    
+    function validation1(event){
+        //Si le champ est vide
+        if (Prénom.validity.valueMissing){
+            event.preventDefault();
+            missPrenom.textContent = 'Prénom manquant';
+            missPrenom.style.color = 'red';
+        //Si le format de données est incorrect
+        }else if (PrénomValid.test(Prénom.value) == false){
+            event.preventDefault();
+            missPrenom.textContent = 'Vérifier vos informations';
+            missPrenom.style.color = 'red';
+        }else{ 
+        }
+    }
+
+    var formValid = document.getElementById('boutton_envoi');
+    var Mail = document.getElementById('Mail');
+    var missMail = document.getElementById('missMail');
+    var MailValid = /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/;
+    
+    formValid.addEventListener('click', validation);
+    
+    function validation2(event){
+        //Si le champ est vide
+        if (Mail.validity.valueMissing){
+            event.preventDefault();
+            missMail.textContent = 'E-mail manquant';
+            missMail.style.color = 'red';
+        //Si le format de données est incorrect
+        }else if (MailValid.test(Mail.value) == false){
+            event.preventDefault();
+            missMail.textContent = 'Vérifier vos informations';
+            missMail.style.color = 'red';
+        }else{  
+        }
+    }
+    $('#Age').datepicker({showAnim: 'fadeIn', numberOfMonths: 2}); 
+	
+	
+    $('#boutton_envoi').click(function() {
+   	var doc= new jsPDF();
+    var nom=$('#Nom').val();
+    var prenom=$('#Prénom').val();
+    var age=$('#Age').val();
+    var mail=$('#Mail').val();
+
+    doc.setTextColor(255,0,0);
+    doc.setFontSize(45);
+    doc.setFont("arial");
+    doc.setFontType("bolditalic");
+
+    doc.text(50,25,"Vos informations");
+    
+
+    doc.setFont("times");
+    doc.setFontSize(30);
+    doc.setTextColor(100);
+
+    doc.text(2,50,"Nom:");
+    doc.text(2,75,"Prénom:");
+    doc.text(2,100,"Date de naissance:");
+    doc.text(2,125,"Mail:");
+
+
+    doc.setFontSize(20);
+    doc.setTextColor(100);
+    doc.setFont("times");
+    doc.setFont("arial");
+    
+
+    doc.text(50,50,Nom);
+    doc.text(50,75,Prénom);
+    doc.text(50,100,Age);
+    doc.text(60,125,Mail);
+    doc.save('formulaire.pdf');
+    
+
+  
+  })
+  
+
+</script>
+
+<br><mark><a href="Acceuil.html">Retour à l'acceuil</a></mark>
+	
+<footer>        
+    <div class="footer">
+            <div id="button"></div>
+        <div id="container">
+            <div id="cont">
+                <div class="footer_center">
+                    <a href="http://www.facebook.com"><img src="images/facebook.png"class=Imagefooter></a>
+                    <a href="http://www.twitter.com"><img src="images/twitter.png"class=Imagefooter></a>
+                    <a href="http://www.instagram.com"><img src="images/instagram.png"class=Imagefooter></a>
+                    <a href="http://www.linkedin.com"><img src="images/linkedin.png"class=Imagefooter></a>
+                    <a href="http://www.rss.com"><img src="images/rss.png"class=Imagefooter></a>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+</body>
+
+
+<script src="js/template.js"></script>
+</html>
